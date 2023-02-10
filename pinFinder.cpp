@@ -21,6 +21,10 @@
 using namespace std;
 
 bool isNumber(char *str, int strLen){
+    //* This function will check if the string is representing a number or not.
+    //* If the string has any other kind of data, i.e - alphabets, charecters etc. the function will return false
+    //* else the function will return true
+
     for (int i = 0; i < strLen; i++)
     {
         if(!(isdigit(str[i]))){
@@ -50,7 +54,7 @@ int main(int argc, char const *argv[])
 
         //* to be considered as a pincode, substring must be only 6 charecter long and only consist of numbers
         if((strlen(subStringedAddress) == 6) && (isNumber(subStringedAddress,strlen(subStringedAddress)))){
-            cout << "Pin Code: "<<subStringedAddress << endl;
+            cout << "Pin Code: "<<subStringedAddress << endl;//*print the pincode
             break;
         }
 
