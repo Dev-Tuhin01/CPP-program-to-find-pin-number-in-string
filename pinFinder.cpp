@@ -5,6 +5,7 @@
 
 #include <bits/stdc++.h>
 #include <string.h>
+#include <ctype.h>
 
 //! if due to some machine sprecific reasons header file <bits/stdc++.h> does not works then use bellow mention header files
 /* //?for c++ 11 and above (any modern compiler)
@@ -13,11 +14,22 @@
 */
 
 /* //?for before c++ 17 (devC++ / turoC++)
- * #include <iostream>
- * #include <string>
+ * #include <iostream.h>
+ * #include <cstring.h>
  */
 
 using namespace std;
+
+bool isNumber(char *str, int strLen){
+    for (int i = 0; i < strLen; i++)
+    {
+        if(!(isdigit(str[i]))){
+            return false;
+        }
+    }
+    return true;
+}
+
 
 int main(int argc, char const *argv[])
 {
@@ -29,16 +41,19 @@ int main(int argc, char const *argv[])
     //* sub String address will divide the string by pelimeter ','
     char *subStringedAddress;
 
-    //?debug line
-    cout << address << endl; //! disposable code
-
     //* takes the first substring
     subStringedAddress = strtok(address, ",");
 
     //*rest of substring
 
     while(subStringedAddress != NULL){
-        cout << subStringedAddress << endl;//! disposal code
+
+        //* to be considered as a pincode, substring must be only 6 charecter long and only consist of numbers
+        if((strlen(subStringedAddress) == 6) && (isNumber(subStringedAddress,strlen(subStringedAddress)))){
+            cout << "Pin Code: "<<subStringedAddress << endl;
+            break;
+        }
+
         subStringedAddress = strtok(NULL, " ,");
     }
 
